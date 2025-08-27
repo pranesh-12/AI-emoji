@@ -1,0 +1,23 @@
+﻿{
+  "words": {
+    "amazing": ["", "", ""],
+    "awesome": ["", "", ""],
+    "cool": ["", "", ""],
+    "hot": ["", "", ""],
+    "smart": ["", "", ""],
+    "python": ["", "", ""],
+    "javascript": ["", "", ""],
+    "react": ["", "", ""],
+    "nodejs": ["", "", ""],
+    "developer": ["", "", ""],
+    "startup": ["", "", ""],
+    "innovation": ["", "", ""]
+  },
+  "phrases": {
+    "artificial intelligence": "",
+    "machine learning": "", 
+    "data science": "",
+    "work from home": "",
+    "remote work": ""
+  }
+}

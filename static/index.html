@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Emoji Translator AI - Free AI-Powered Text to Emoji Converter</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Free AI-powered emoji translator. Transform your text with intelligent emojis. Multiple styles, real-time translation, and mobile-friendly interface. Perfect for social media, messaging, and content creation.">
+    <meta name="keywords" content="emoji translator, AI emoji, text to emoji, emoji generator, social media tools, emoji converter, smart emojis, text enhancement">
+    <meta name="author" content="Emoji Translator AI">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Emoji Translator AI - Transform Text with Smart Emojis">
+    <meta property="og:description" content="Free AI-powered emoji translator with multiple styles and real-time translation. Perfect for social media and messaging.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://emoji-translator-ai.com">
+    <meta property="og:image" content="https://emoji-translator-ai.com/og-image.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Emoji Translator AI - Free Text to Emoji Converter">
+    <meta name="twitter:description" content="Transform your text with AI-powered emojis. Multiple styles and real-time translation.">
+    <meta name="twitter:image" content="https://emoji-translator-ai.com/twitter-image.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Google Analytics (Replace GA_MEASUREMENT_ID with your actual ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .premium-banner {
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .premium-banner h3 {
+            margin-bottom: 8px;
+            font-size: 1.3em;
+        }
+
+        .premium-btn {
+            background: white;
+            color: #ff6b6b;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .premium-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-share {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .social-share h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .social-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .usage-counter {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .translator-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .input-section {
+            margin-bottom: 30px;
+        }
+
+        .input-section label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 16px;
+            resize: vertical;
+            min-height: 120px;
+            transition: border-color 0.3s ease;
+        }
+
+        .text-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .control-group {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .control-group h3 {
+            margin-bottom: 15px;
+            color: #444;
+            font-size: 1.1em;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .radio-option:hover {
+            background-color: rgba(102, 126, 234, 0.1);
+        }
+
+        .radio-option input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #667eea;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .checkbox-option:hover {
+            background-color: rgba(102, 126, 234, 0.1);
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            margin-right: 10px;
+            accent-color: #667eea;
+        }
+
+        .translate-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-bottom: 30px;
+        }
+
+        .translate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .translate-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .result-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .result-section h3 {
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .result-text {
+            font-size: 18px;
+            line-height: 1.6;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            word-wrap: break-word;
+        }
+
+        .copy-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: #218838;
+        }
+
+        .examples-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .examples-section h2 {
+            margin-bottom: 20px;
+            color: #444;
+            text-align: center;
+        }
+
+        .example-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .example-item:hover {
+            background-color: #e9ecef;
+        }
+
+        .example-original {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .example-translated {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #dc3545;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #28a745;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .translator-card {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .controls {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Emoji Translator AI</h1>
+            <p>Transform your text with intelligent emoji translation</p>
+        </div>
+
+        <!-- Premium Banner -->
+        <div class="premium-banner" id="premiumBanner">
+            <h3>🚀 Unlock Premium Features!</h3>
+            <p>Unlimited translations, custom emoji packs, API access & more</p>
+            <button class="premium-btn" onclick="showPremiumModal()">Upgrade to Premium - $4.99/month</button>
+        </div>
+
+        <!-- Usage Counter -->
+        <div class="usage-counter" id="usageCounter">
+            <span id="usageText">Free Daily Limit: <span id="usageCount">0</span>/100 translations used</span>
+        </div>
+
+        <!-- Social Sharing -->
+        <div class="social-share">
+            <h3>📱 Share Emoji Translator AI</h3>
+            <button class="social-btn" onclick="shareToTwitter()">Share on Twitter 🐦</button>
+            <button class="social-btn" onclick="shareToFacebook()">Share on Facebook 📘</button>
+            <button class="social-btn" onclick="shareToLinkedIn()">Share on LinkedIn 💼</button>
+            <button class="social-btn" onclick="shareToWhatsApp()">Share on WhatsApp 💬</button>
+        </div>
+
+        <div class="translator-card">
+            <div class="input-section">
+                <label for="textInput">Enter your text to translate:</label>
+                <textarea 
+                    id="textInput" 
+                    class="text-input" 
+                    placeholder="Type your message here... For example: 'Good morning! I'm feeling great and ready for work. Let's have coffee and discuss the project.'"
+                ></textarea>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <h3>🎨 Style</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="style" value="fun" checked>
+                            <span>Fun - Playful and expressive</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="style" value="professional">
+                            <span>Professional - Subtle and appropriate</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="style" value="meme">
+                            <span>Meme - Over-the-top and hilarious</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>📊 Density</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="density" value="light">
+                            <span>Light - Minimal emojis</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="density" value="medium" checked>
+                            <span>Medium - Balanced</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="density" value="heavy">
+                            <span>Heavy - Emoji-rich</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>🔄 Mode</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="mode" value="append" checked>
+                            <span>Append - Add emojis to words</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="mode" value="replace">
+                            <span>Replace - Replace words with emojis</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>💫 Options</h3>
+                    <div class="radio-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="addSentiment" checked>
+                            <span>Add sentiment emoji</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="translate-btn" onclick="translateText()">
+                🚀 Translate to Emoji
+            </button>
+
+            <div id="result" style="display: none;">
+                <div class="result-section">
+                    <h3>Original Text:</h3>
+                    <div class="result-text" id="originalText"></div>
+                </div>
+                <div class="result-section">
+                    <h3>Translated Text:</h3>
+                    <div class="result-text" id="translatedText"></div>
+                    <button class="copy-btn" onclick="copyToClipboard()">📋 Copy Result</button>
+                </div>
+            </div>
+
+            <div id="loading" class="loading" style="display: none;">
+                <p>🔄 Translating your text...</p>
+            </div>
+
+            <div id="message"></div>
+        </div>
+
+        <div class="examples-section">
+            <h2>✨ Try These Examples</h2>
+            <div id="examples">
+                <div class="example-item" onclick="loadExample('Good morning! I am feeling great and ready for work.')">
+                    <div class="example-original">Original: Good morning! I am feeling great and ready for work.</div>
+                    <div class="example-translated">Good morning! 🌅 I am feeling great 😊 and ready for work. 💼</div>
+                </div>
+                <div class="example-item" onclick="loadExample('Let us have coffee and discuss the project deadline.')">
+                    <div class="example-original">Original: Let's have coffee and discuss the project deadline.</div>
+                    <div class="example-translated">Let's have coffee ☕ and discuss the project deadline. ⏰</div>
+                </div>
+                <div class="example-item" onclick="loadExample('I am over the moon about this amazing success')">
+                    <div class="example-original">Original: I am over the moon about this amazing success!</div>
+                    <div class="example-translated">I am over the moon 🌙 about this amazing 🤩 success! 🎉</div>
+                </div>
+                <div class="example-item" onclick="loadExample('Time for lunch and then a meeting with the team.')">
+                    <div class="example-original">Original: Time for lunch and then a meeting with the team.</div>
+                    <div class="example-translated">Time ⏰ for lunch 🍽️ and then a meeting 👥 with the team. 👨‍💼</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8000';
+
+        async function translateText() {
+            const text = document.getElementById('textInput').value.trim();
+            
+            if (!text) {
+                showMessage('Please enter some text to translate.', 'error');
+                return;
+            }
+
+            const style = document.querySelector('input[name="style"]:checked').value;
+            const density = document.querySelector('input[name="density"]:checked').value;
+            const mode = document.querySelector('input[name="mode"]:checked').value;
+            const addSentiment = document.getElementById('addSentiment').checked;
+
+            showLoading(true);
+            hideResult();
+            clearMessage();
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/translate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        text: text,
+                        style: style,
+                        density: density,
+                        mode: mode,
+                        add_sentiment: addSentiment
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                document.getElementById('originalText').textContent = data.original_text;
+                document.getElementById('translatedText').textContent = data.translated_text;
+                
+                showResult();
+                showMessage('Translation completed successfully! 🎉', 'success');
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('Failed to translate text. Please make sure the API server is running.', 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function loadExample(text) {
+            document.getElementById('textInput').value = text;
+            document.getElementById('textInput').focus();
+        }
+
+        function copyToClipboard() {
+            const translatedText = document.getElementById('translatedText').textContent;
+            navigator.clipboard.writeText(translatedText).then(() => {
+                showMessage('Copied to clipboard! 📋', 'success');
+            }).catch(() => {
+                showMessage('Failed to copy to clipboard.', 'error');
+            });
+        }
+
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+            document.querySelector('.translate-btn').disabled = show;
+        }
+
+        function showResult() {
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function hideResult() {
+            document.getElementById('result').style.display = 'none';
+        }
+
+        function showMessage(message, type) {
+            const messageEl = document.getElementById('message');
+            messageEl.innerHTML = `<div class="${type}">${message}</div>`;
+            
+            // Auto-hide success messages after 3 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    clearMessage();
+                }, 3000);
+            }
+        }
+
+        function clearMessage() {
+            document.getElementById('message').innerHTML = '';
+        }
+
+        // Allow Enter key to trigger translation (Ctrl+Enter for multi-line)
+        document.getElementById('textInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey && !e.ctrlKey) {
+                e.preventDefault();
+                translateText();
+            }
+        });
+
+        // Usage tracking and premium features
+        let dailyUsage = parseInt(localStorage.getItem('dailyUsage') || '0');
+        let lastUsageDate = localStorage.getItem('lastUsageDate');
+        const today = new Date().toDateString();
+
+        // Reset daily usage if it's a new day
+        if (lastUsageDate !== today) {
+            dailyUsage = 0;
+            localStorage.setItem('lastUsageDate', today);
+        }
+
+        // Update usage counter
+        function updateUsageCounter() {
+            const usageCount = document.getElementById('usageCount');
+            const usageText = document.getElementById('usageText');
+            const premiumBanner = document.getElementById('premiumBanner');
+            
+            usageCount.textContent = dailyUsage;
+            
+            if (dailyUsage >= 100) {
+                usageText.innerHTML = '<span style="color: #ff6b6b;">Daily limit reached! Upgrade to Premium for unlimited access.</span>';
+                premiumBanner.style.display = 'block';
+            } else if (dailyUsage >= 80) {
+                premiumBanner.style.display = 'block';
+            }
+            
+            localStorage.setItem('dailyUsage', dailyUsage.toString());
+        }
+
+        // Premium modal
+        function showPremiumModal() {
+            alert('Premium Features:\n\n✨ Unlimited daily translations\n🎨 Exclusive emoji styles\n🔧 API access\n📊 Usage analytics\n💼 Commercial license\n🚀 Priority support\n\nContact us at: premium@emoji-translator-ai.com');
+            gtag('event', 'premium_interest', {
+                'event_category': 'engagement',
+                'event_label': 'premium_modal_opened'
+            });
+        }
+
+        // Social sharing functions
+        function shareToTwitter() {
+            const text = "Transform your text with AI-powered emojis! 🤖✨ Check out this amazing Emoji Translator AI";
+            const url = window.location.href;
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+            gtag('event', 'share', {'method': 'twitter'});
+        }
+
+        function shareToFacebook() {
+            const url = window.location.href;
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+            gtag('event', 'share', {'method': 'facebook'});
+        }
+
+        function shareToLinkedIn() {
+            const url = window.location.href;
+            const title = "Emoji Translator AI - Transform Text with Smart Emojis";
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+            gtag('event', 'share', {'method': 'linkedin'});
+        }
+
+        function shareToWhatsApp() {
+            const text = "Check out this amazing Emoji Translator AI! Transform your text with smart emojis 🤖✨";
+            const url = window.location.href;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
+            gtag('event', 'share', {'method': 'whatsapp'});
+        }
+
+        // Enhanced translate function with usage tracking
+        const originalTranslateText = translateText;
+        translateText = async function() {
+            // Check daily limit for free users
+            if (dailyUsage >= 100) {
+                showMessage('Daily limit reached! Upgrade to Premium for unlimited translations.', 'error');
+                showPremiumModal();
+                return;
+            }
+
+            // Call original function
+            await originalTranslateText();
+            
+            // Increment usage
+            dailyUsage++;
+            updateUsageCounter();
+            
+            // Track analytics
+            gtag('event', 'translation', {
+                'event_category': 'engagement',
+                'event_label': 'text_translated',
+                'value': dailyUsage
+            });
+        };
+
+        // Initialize usage counter on page load
+        updateUsageCounter();
+
+        // Load a random example on page load
+        window.addEventListener('load', function() {
+            const examples = [
+                'Good morning! I am feeling great and ready for work.',
+                'Let\'s have coffee and discuss the project deadline.',
+                'I am over the moon about this amazing success!',
+                'Time for lunch and then a meeting with the team.'
+            ];
+            const randomExample = examples[Math.floor(Math.random() * examples.length)];
+            document.getElementById('textInput').value = randomExample;
+            
+            // Track page view
+            gtag('event', 'page_view', {
+                'page_title': 'Emoji Translator AI',
+                'page_location': window.location.href
+            });
+        });
+    </script>
+</body>
+</html>
